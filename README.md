@@ -5,9 +5,10 @@ Supabaseを使用して、WEBアプリケーションを開発している際に
 ローカル開発することを前提としているため、そのままGithubに.envファイルをアップロードしている。
 
 ## 解説
-GithubやSupabaseの解説で、JSONB_AGG形式の情報をどのように検索するかが書いていなかったが、
+GithubやSupabaseの解説で、JSONB_AGG形式の情報をどのように検索するかが書いていなかったが、頑張って実装した。
+ポイントとしては、JSONの文字列に変更することでした。
 
-## AND検索
+### AND検索
 
 ```typescript
   const supabase = createClient();
@@ -17,7 +18,7 @@ GithubやSupabaseの解説で、JSONB_AGG形式の情報をどのように検索
   .contains("likes", JSON.stringify([{ like_name: "1" }, {like_name: "2"}]));
 ```
 
-## OR検索
+### OR検索
 同じ条件で検索するとして、配列で処理を行なっている。
 ```typescript
 const likeNames = ["1", "2"];
